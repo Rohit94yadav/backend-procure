@@ -2,7 +2,7 @@ const { productsModel } = require("../model/product.model");
 const { UserModel } = require("../model/user.model");
 
 const Addproducts = async (req, res) => {
-  const { taskname, user_id, title, tag } = req.body;
+  const { title, image, description, price, category} = req.body;
   const addproduct = new productsModel({
     title: title,
     image: image,
