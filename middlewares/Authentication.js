@@ -10,10 +10,10 @@ const Authentication=(req,res,next)=>{
     }
    
     const decoded=jwt.verify(token,process.env.SECRET_KEY);
-    const {user_id,email}=decoded
+    const {_id,email}=decoded
     if(decoded){
         req.body.email=email;
-        req.body.user_id=user_id;
+        req.body._id=_id;
         next()
     }else{
         res.send({msg:"please login first"})
