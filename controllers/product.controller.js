@@ -33,8 +33,9 @@ const Getproducts = async (req, res) => {
     const result = await productsModel.find({ _id: _id, title: title });
     res.send(result);
   } else {
-    const result = await productsModel.find({ _id: _id });
+    const result = await productsModel.find();
     res.send(result);
+    
   }
 };
 const Updateproducts = async (req, res) => {
