@@ -27,7 +27,7 @@ const Deleteproducts = async (req, res) => {
 
 const Getproducts = async (req, res) => {
   const { title } = req.query;
-  const _id = req.body._id;
+  const { _id } = req.body;
   console.log(title, _id);
   if (title) {
     const result = await productsModel.find({ _id: _id, title: title });
