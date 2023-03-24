@@ -2,7 +2,7 @@ const { productsModel } = require("../model/product.model");
 const { UserModel } = require("../model/user.model");
 
 const Addproducts = async (req, res) => {
-  const { title, image, description, price, category} = req.body;
+  const { title, image, description, price, category } = req.body;
   const addproduct = new productsModel({
     title: title,
     image: image,
@@ -10,8 +10,12 @@ const Addproducts = async (req, res) => {
     price: price,
     category: category,
   });
-  await addproduct.save();
-  res.send({ mag: "Product Added Successfully" });
+  try {
+    await addproduct.save();
+    res.send({ msg: "Product added successfully" });
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
 };
 
 const Deleteproducts = async (req, res) => {
